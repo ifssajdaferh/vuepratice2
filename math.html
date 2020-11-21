@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .span{
+            margin: 0 15px;
+        }
+        #div2{
+            margin: 40px;
+            width: 260px;
+            border: 1px solid cyan;
+        }
+        .p{
+            display: inline-block;
+            width: 60px;
+            height: 22px;
+             border-left:1px solid cyan ;
+             text-align: center;
+
+        }
+        .p:first-child{
+            border-left:none;
+        }
+        .row{
+            border: 1px solid cyan; 
+        }
+        .row:last-child{
+            border:none;
+        }
+        .row:nth-child(2n){
+            background-color: green;
+        }
+        .row:nth-child(2n+1){
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    
+<div id="div1">
+    
+</div>
+<div id="div2"></div>
+
+
+    <script>
+let txt= ``;
+for(let row=1;row<=9;row++){
+for(let col=1;col<=row;col++){
+    txt +=`<span class=span>${col} * ${row} = ${col*row}</span>`
+}
+txt +='<br>'
+    
+}
+div1.innerHTML=txt;
+
+//座次表
+let studentarr = [
+    ['打底袜','ngh','sda','sd'],
+    ['达到','nrh','syt','sed'],
+    ['个人','nht','syt','sed'],
+    ['合同号','uy','rta','sdl'],
+]
+
+let stxt='';
+for(let i=0;i<4;i++){
+    stxt +=`<div class=row>`
+    for(let js=0;js<4;js ++){
+        console.log(js);
+       
+        stxt +=`<span class=p>${studentarr[i][js]}</span>`;
+    }
+    stxt +=`</div>`
+}
+
+div2.innerHTML=stxt;
+  
+    </script>
+</body>
+</html>

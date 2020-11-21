@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script src="./js.js/jq.js"></script>
+
+    <script>
+        //创建label标签
+        let protext=document.createElement('label');
+        protext.innerHTML='请选择省份';
+        document.body.appendChild(protext);
+
+        //准备省份的数据
+        let proarr=['河南','浙江','湖北'];
+       let proSecelt = document.createElement('select');
+       for(let i=0;i<proarr.length;i++){
+           let option=document.createElement('option');
+           option.innerHTML=proarr[i];
+           //给省份增加index，方便在选择该省份时获取..
+           option.value=i;
+           proSecelt.appendChild(option);
+       }
+
+//新增省份对应的select标签
+       document.body.appendChild(proSecelt);
+
+       //准备城市的数据
+       let henancity = ['郑州','平顶山','安阳'];
+       let zhejiangcity= ['宁波','舟山','道口'];
+       let hubeicity= ['武汉','黄冈','云南'];
+       let cityarr= []
+       cityarr.push(henancity)
+       cityarr.push(zhejiangcity)
+       cityarr.push(hubeicity)
+       //二维数组的push赋值
+let cityselect=document.createElement('select');
+      //显示默认
+      for(let index=0;index<cityarr[0].length;index++){
+          let option=document.createElement('option');
+          option.innerHTML=cityarr[0][index]
+          cityselect.appendChild(option)
+      }
+      //新增城市的select
+document.body.appendChild(cityselect);
+
+//响应用户操作
+proSecelt.onchange=function(e) {
+    //删除之前的城市
+    let obt=cityselect.children
+//for循环这里没用i++，和小于。length这样是因为 循环一遍一遍执行过程中-长度是不断减少的 也就是length相当于不断减少的变量。所以i--的形式 length变量换成常量0.
+    for(let index=obt.length-1;index>=0;index--){
+        cityselect.removeChild(obt[index])
+    }
+
+    let cityindex=this.value;
+    //根据省份的index，添加新的数据
+    
+    console.log(cityarr[cityindex]);
+    for(let index=0;index<cityarr[cityindex].length;index++){
+        //生成
+          let option=document.createElement('option');
+       //赋值
+     
+          option.innerHTML=cityarr[cityindex][index]
+         
+          //向页面添加  元素变量.方法（子元素变量）
+          cityselect.appendChild(option)
+          
+      }
+}
+    </script>
+    
+</body>
+</html>

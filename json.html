@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <table>
+<thead>
+    <tr>
+        <th>商品名称</th>
+        <th>单价</th>
+        <th>数量</th>
+        <th>小计</th>
+    </tr>
+</thead>
+
+<tbody id="tbody">
+
+</tbody>
+
+
+    </table>
+
+
+    <script>
+        // 获取数据，来自cart.js
+let data = xhrdata.data.cartmodels;
+let trtxt =``;
+//商品内容
+let goodtr = ``;
+//总计内容
+let totaltr = ``;
+// 总数量
+let totalnum=0;
+// 总价格
+let totalprice =0;
+for(let i=0;i<data.length;i++){
+goodtr +=`
+<tr>
+<td>${data[i].name}</td>
+<td>${data[i].price.toFixed(2)}</td>
+<td>${data[i].num}</td>
+<td>${data[i].sum.toFixed(2)}</td>
+
+
+</tr>
+
+// 计算总数量 总价格
+
+`
+totalnum +=data[i].num;
+totalprice +=data[i].sum;
+
+}
+total =`
+<tr>
+<td colspan="2">总计</td>
+<td>${totalnum}</td>
+<td>${totalprice.toFixed(2)}}</td>
+<tr/>
+`
+trtxt = goodstr+totaltr;
+tbody.innerHTML = trtxt;
+
+    </script>
+</body>
+</html>

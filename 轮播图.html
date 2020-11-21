@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<style type="text/css">
+			#warp{
+				width: 800px;
+				height: 400px;
+				position:relative;
+			
+				
+			}
+			.list{
+				width: 800px;
+				height: 400px;
+				list-style: none;
+				position: relative;
+					padding-left:0;
+			}
+			.item{
+				width: 100%;
+				height: 100%;
+				color: white;
+                font-size: 50px;		
+						position: absolute;
+						opacity: 0;
+						transition: all 0.3s;
+			}
+			.list :nth-child(1){
+				background-color:black ;
+			}
+			.list :nth-child(2){
+				background-color: red;
+			}
+			.list :nth-child(3){
+				background-color:goldenrod;
+			}
+			.list :nth-child(4){
+				background-color:green ;
+			}
+			.list :nth-child(5){
+				background-color: pink;
+			}
+			.btn{
+				width: 50px;
+				height: 100px;
+				position: absolute;
+				top: 40%;
+				z-index: 100;
+			}
+			#gopre{
+				left:0;
+			}
+			#gonext{
+				right:0;
+			}
+			.active{
+				z-index: 99;
+					opacity: 1;
+			}
+			.pointlist{
+				list-style: none;
+				position: absolute;
+				right: 20px;
+				bottom: 20px;
+				z-index: 100;
+				
+			}
+			.point{
+				width: 15px;
+				height: 15px;
+				float: left;
+				padding-left: 0;
+				margin-right: 8px;
+				border: 2px solid cyan;
+				border-radius: 100%;
+				
+			}
+			.pointactive{
+				background-color: white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="warp">
+			 <ul class="list">
+			 <li class="item active">0</li>
+			<li class="item">1</li>
+			<li class="item">2</li>
+			<li class="item">3</li>
+			<li class="item">4</li>
+			 </ul>
+			 <ul class="pointlist">
+			 	<li class="point pointactive"></li>
+							 	<li class="point"></li>
+											 	<li class="point"></li>
+															 	<li class="point"></li>
+																			 	<li class="point"></li>
+			 </ul>
+			 <button type="button" class="btn" id="gopre"><</button>
+			 <button type="button" class="btn" id="gonext">></button>
+		</div>
+		
+		<!-- 
+		视图的变化往往都是通过控制css 通过控制css样式类名控制页面视图的流程
+		切换事件
+		1淡如淡出 ：切换前透明度0 切换后1  再加上transition过渡属性 -->
+		<!-- 代码块封装函数 既可以嵌套调用组成线路不会影响流程，同时也可以复用 -->
+		<!-- 比如第一个和第三个节点函数 在第二个的前后调用 组成执行线路 
+		函数式编程  判断----执行
+		-->
+		
+		<script type="text/javascript">
+			var items=document.getElementsByClassName("item");
+			var goprebtn=document.getElementById("gopre");
+			var gonextbtn=document.getElementById("gonext");
+			  var index=0;//按照index设置哪个拥有active属性  不仅是图片 还有小点          至于程序逻辑上的意义，需要拐回来再看
+			  
+			  // 清除active函数 
+			   var clearactive=function() {
+				   // 不管有没有 全部重新赋值
+				   for(let i=0;i<items.length;i++){
+					   items[i].className="item";
+					   
+				   }
+			   }
+			  
+			  //下一张1判断控制index
+			    var gonext=function() {
+					clearactive();
+					  if(index < 4){
+					  index++;
+				  }else{
+					  index=0;
+				  }
+					
+					goindex();
+				}
+			   
+			   // 下一张2执行index     也是上一张2    两个按钮click事件导向线路公用此节点   ，并且控制图片和小点
+			  var goindex=function() {
+				clearactive();
+				  //换图的
+				  items[index].className="item active"
+				  
+				  //加色的
+				  gopicked();
+			  }
+			  
+			  
+			   // 上一张1判断index
+			  var gopre=function() {
+				  clearactive();
+				  if(index == 0){
+					  index = 4;
+				  }else{
+					  index--
+				  }
+				  goindex();
+			  }
+			  
+			  //上一张3给事件(导向线路)挂上函数(节点) 
+			  goprebtn.addEventListener('click',function() {
+				  gopre();
+		
+				  
+			  })
+		
+			  
+			      // 下一张3给事件(导向线路)挂上函数(节点) 
+			  gonextbtn.addEventListener('click',function() {
+				  gonext();
+				
+				  
+			  })
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  // 小点-----------------
+			  var points=document.getElementsByClassName("point");
+			  
+			  // 1<清除选中样式类> 
+			  var clearpointactive=function() {
+				  for(let i=0;i<points.length;i++){
+				  					   points[i].className="point";
+				  					   
+				  }
+				  
+			  }
+			  
+			  //2 <添加选中样式类>   不写在一起是因为1其他地方 事件流也要用   高视距 小点也要被控制 受因元素
+			  var gopicked=function() {
+				  clearpointactive();
+				  points[index].className="point pointactive"
+				  
+			  }
+			 
+			 // 这个循环就是一个循环赋值 不是一直运行,可以理解成生成下面points.length个代码块
+			 for(let i=0;i<points.length;i++){
+				 console.log("hi")
+				   points[i].addEventListener('click',function() {
+					   index=i;
+					   
+					   // 因为这里点也需要控制点的样式 和 图片样式 ,所以需要将点与其他事件执行对应起来(不管是点的样式执行还是图片样式执行),那程序前面都是通过index这个值连接的
+					   // 只需要将对应的点值 赋值给index即可
+					   // 这里可以直接 i 值,也可以给小点加属性 ,通过 getattribute属性获取 在复制给index  两种方式
+					   // console.log(index,i)
+					goindex();
+					   
+					 
+				  
+			  })
+			  
+			 }
+			
+		</script>
+		
+	</body>
+</html>

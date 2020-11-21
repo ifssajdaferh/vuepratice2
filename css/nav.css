@@ -1,0 +1,228 @@
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    
+    
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+a{
+    text-decoration: none;
+}
+ol, ul {
+    list-style: none;
+}
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.layout{
+    *zoom:1;
+}
+.cf:after,
+.cf:before{
+    content: '';
+    display: table;
+}
+.cf:after{
+    clear: both;
+}
+.cf{
+    *zoom:1;
+}
+small,
+cite,
+code,
+em,
+th,
+i,
+b{
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 500;
+}
+/* css reset */
+.topcool{
+    height: 45px;
+    width: 100%;
+    /* background:url(topBg.png) repeat-x; */
+    /* repat-x 水平重复 */
+    position: relative;
+    text-align: center;
+    z-index: 999;
+    background-color: #ffae00;
+}
+.topheader{
+    width: 1083px;
+    height: 45px;
+    margin: 0 auto;
+    /* 上下0，左右auto居中 */
+}
+.toplogo{
+    width: 124px;
+    height: 31px;
+    background:url(https://static.zcool.cn/git_z/z/common/images/svg/logo.svg) no-repeat;
+    float: left;
+    /* a标签设置行内元素不起作用，所以floa */
+    margin:11px 0 0 0;
+}
+.topnav{
+    float: left;
+    padding-left: 10px;
+
+}
+.topnav>a{
+    /* > 选择直接子元素-子代选择器，+ 选择兄弟元素-兄弟选择器 */
+    height: 43px;
+    width: 50px;
+   
+    line-height: 47px;
+    color: #000;
+    text-align: center;
+    float: left;
+    overflow: hidden;
+    font-size: 14px;
+
+}
+.topnav>a:hover{
+background: #2d2d2d;
+font-weight: bold;
+color: #fff;
+}
+.morenav{
+    float: left;
+    height: 43px;
+    position: relative;
+    padding-right: 8px;
+}
+.morenav>a{
+    height: 43px;
+    width: 50px;
+    line-height: 44px;
+    color: #000;
+    text-align: center;
+    float: left;
+    overflow: hidden;
+    font-size: 14px;
+}
+.morenav>a:hover{
+    background: #2d2d2d;
+font-weight: bold;
+color: #fff;
+}
+
+/* ---------------------- */
+.morenav-hover{
+    background: #2d2d2d;
+    font-weight: bold;
+}
+.morenav-hover a{
+    color: #fff;
+}
+/* 两个class样式集合用来配合js改变样式 */
+
+
+.morenav b{
+    position: absolute;
+    /* 绝对定位相对于上级最近的定位元素-直至body ,所以经常写完绝对后，给目标父级加相对*/
+    top: 21px;
+    right: 7px;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border-style: solid dashed dashed dashed;
+    border-width: 5px 5px;
+    border-color: #8c6000 transparent transparent;
+}
+.nav-more-ul{
+    display:none;
+    width: 100px;
+    height: 170px;
+    position:absolute;
+    top:43px;
+    left: 0;
+    background-color: #6b4545;
+}
+/* .morenav:hover .nav-more-ul{
+    display: block;
+} css写法  通过display-隐藏属性     这里注释 采用js*/
+.nav-more-ul li{
+width: 100px;
+height: 34px;
+
+}
+
+.nav-more-ul a{
+       color: #fff;
+}
+
+.top-search-txt{
+    height: 25px;
+    width: 143px;
+    line-height: 25px;
+    border: 0;
+    float: left;
+    margin-left: 311px;
+    margin-top: 9px;
+    padding:0 0 0 5px;
+
+
+}
+.top-search-btn{
+
+cursor: pointer;
+background: url(https://cn.bing.com/sa/simg/SharedSpriteDesktop_ClearX_2x_030520.png);
+background-repeat:  no-repeat;
+
+background-position: -242px 0;
+/* 图片位置 */
+height: 40px;
+width: 40px;
+text-indent: -99em;
+border-width: 0;
+border-style: solid;
+margin: 1px 3px 3px -40px;
+background-position: -242px 0;
+-webkit-transform: scale(.45);
+-ms-transform: scale(.45);
+transform: scale(.45);
+
+
+
+}
+.login{
+    float: right;
+    height: 43px;
+}
+.login a{
+    height: 43px;
+    width: 50px;
+    line-height: 44px;
+    color: #000;
+    text-align: center;
+    overflow: hidden;
+    font-size: 14px;
+
+  
+}
+               
